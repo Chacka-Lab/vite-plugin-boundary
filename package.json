@@ -1,21 +1,28 @@
 {
-  "name": "vite-plugin-only",
+  "name": "vite-plugin-boundary",
   "type": "module",
-  "version": "0.0.1",
-  "description": "Build-time server-only and client-only module boundaries for Vite",
-  "homepage": "https://github.com/Chacka-Lab/vite-plugin-only",
-  "bugs": "https://github.com/Chacka-Lab/vite-plugin-only/issues",
+  "version": "0.1.0",
+  "description": "Build-time server-only and client-only module boundaries for Vite.",
+  "homepage": "https://github.com/Chacka-Lab/vite-plugin-boundary",
+  "bugs": "https://github.com/Chacka-Lab/vite-plugin-boundary/issues",
   "license": "MIT",
   "keywords": [
-    "vite"
+    "vite",
+    "boundary",
+    "server-only",
+    "client-only"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chacka-Lab/vite-plugin-boundary.git"
+  },
   "scripts": {
     "build": "tsdown"
   },
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
-      "version": ">=11",
+      "version": ">=10",
       "onFail": "download"
     }
   },
@@ -31,8 +38,8 @@
   },
   "devDependencies": {
     "tsdown": "^0.22.3",
-    "typescript": "^6.0.0",
-    "vite": "^8.0.0",
+    "typescript": "^6.0.3",
+    "vite": "^8.1.3",
     "prettier": "^3.8.3"
   },
   "peerDependencies": {
