@@ -1,4 +1,4 @@
-# vite-plugin-only
+# vite-plugin-boundary
 
 Build-time `server-only` and `client-only` module boundaries for Vite.
 
@@ -8,7 +8,7 @@ bundle — with a clear build error, not a silent runtime failure.
 ## Install
 
 ```bash
-pnpm add -D vite-plugin-only
+pnpm add -D vite-plugin-boundary
 ```
 
 ## Usage
@@ -18,11 +18,11 @@ pnpm add -D vite-plugin-only
 ```typescript
 // vite.config.ts
 import { defineConfig } from 'vite';
-import serverClientOnly from "vite-plugin-only";
+import boundary from "vite-plugin-boundary";
 
 export default defineConfig({
   plugins: [
-    serverClientOnly(),
+    boundary(),
   ],
 });
 ```
@@ -31,7 +31,17 @@ export default defineConfig({
 
 ```typescript
 // src/global.d.ts
-/// <reference types="vite-plugin-only/env" />
+/// <reference types="vite-plugin-boundary/env" />
+```
+
+Or add in `tsconfig.json`
+
+```json
+{
+  "compilerOptions": {
+    "types": ["vite-plugin-boundary/env"],
+  }
+}
 ```
 
 ### 3. Guard your modules
