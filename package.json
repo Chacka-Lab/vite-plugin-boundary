@@ -17,7 +17,8 @@
     "url": "git+https://github.com/Chacka-Lab/vite-plugin-boundary.git"
   },
   "scripts": {
-    "build": "tsdown"
+    "build": "tsdown",
+    "check": "tsc --noEmit"
   },
   "devEngines": {
     "packageManager": {
