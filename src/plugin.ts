@@ -1,27 +1,31 @@
 import type { Plugin } from 'vite';
 
-export default function serverClientOnly(): Plugin {
+/**
+ * Creates a Vite plugin that enforces server/client module boundaries.
+ *
+ * Intercepts imports of `server-only` and `client-only` and throws a build
+ * error when a boundary is violated.
+ *
+ * @returns A Vite plugin object.
+ */
+export default function boundary(): Plugin {
   return {
-    name: 'server-client-only',
+    name: 'vite-plugin-boundary',
     enforce: 'pre',
     resolveId(id, importer, { ssr }) {
       if (id === 'server-only') {
         if (!ssr)
-          this.error(
-            `"server-only" module was imported in [${importer}]. This file must only run on the server.`,
-          );
+          this.error(`Attempt to import 'server-only' in a client module: ${importer}`);
       } else if (id === 'client-only') {
         if (ssr)
-          this.error(
-            `"client-only" module was imported in [${importer}]. This file must only run in the browser.`,
-          );
+          this.error(`Attempt to import 'client-only' in a server module: ${importer}`);
       } else {
         return null;
       }
-      return '\0server-client-only';
+      return '\0vite-plugin-boundary:id';
     },
     load(id) {
-      if (id === '\0server-client-only') return 'export {}';
+      if (id === '\0vite-plugin-boundary:id') return 'export {}';
     },
   };
 }
